@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
 import NewExpense, {
   ExpenseDataProps,
 } from "./components/NewExpense/NewExpense";
+import { Fragment } from "react";
+import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <Fragment>
       <GlobalStyle />
       <NewExpense onNewExpense={saveExpenseHandler} />
+      <Expenses />
     </Fragment>
   );
 };
