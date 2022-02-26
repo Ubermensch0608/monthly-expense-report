@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import Expenses from "./components/Expenses/Expenses";
+import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 
 const App = () => {

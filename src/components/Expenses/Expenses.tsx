@@ -1,36 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
+import Expense, { ExpenseProps } from "./Expense";
 
-const MOCK_DATA = [
-  {
-    id: "a1",
-    title: "wine",
-    amount: 25000,
-    date: "2022.02.12",
-  },
-  {
-    id: "a2",
-    title: "coffee",
-    amount: 5000,
-    date: "2022.02.15",
-  },
-  {
-    id: "a3",
-    title: "chair",
-    amount: 70000,
-    date: "2022.01.09",
-  },
-];
+const Expenses: FC<{ expenses: ExpenseProps[] }> = ({ expenses }) => {
+  if (expenses.length === 0) {
+    return <div>지출하신 내역이 없습니다.</div>;
+  }
 
-const Expenses = () => {
   return (
     <div>
       <ul>
-        {MOCK_DATA.map((expense) => (
-          <li key={expense.id}>
-            <div>{expense.date}</div>
-            <h3>{expense.title}</h3>
-            <div>{expense.amount}</div>
-          </li>
+        {expenses.map((expense) => (
+          <Expense
+            key={expense.id}
+            amount={expense.amount}
+            date={expense.date}
+            title={expense.title}
+          />
         ))}
       </ul>
     </div>
