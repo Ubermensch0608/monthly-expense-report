@@ -1,20 +1,43 @@
 import NewExpense, {
   ExpenseDataProps,
 } from "./components/NewExpense/NewExpense";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 
+const MOCK_DATA = [
+  {
+    id: "a1",
+    title: "와인",
+    amount: 25000,
+    date: "2022.02.12",
+  },
+  {
+    id: "a2",
+    title: "커피",
+    amount: 5000,
+    date: "2022.02.15",
+  },
+  {
+    id: "a3",
+    title: "의자",
+    amount: 70000,
+    date: "2022.01.09",
+  },
+];
+
 const App = () => {
-  const saveExpenseHandler = (expenses: ExpenseDataProps) => {
-    console.log(expenses, "in App.tsx");
+  const [expenseList, setExpenseList] = useState(MOCK_DATA);
+
+  const saveExpenseHandler = (newExpenses: ExpenseDataProps) => {
+    setExpenseList((expenseList) => [newExpenses, ...expenseList]);
   };
 
   return (
     <Fragment>
       <GlobalStyle />
       <NewExpense onNewExpense={saveExpenseHandler} />
-      <Expenses />
+      <Expenses expenses={expenseList} />
     </Fragment>
   );
 };

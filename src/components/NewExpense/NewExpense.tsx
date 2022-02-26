@@ -27,9 +27,13 @@ const NewExpense: FC<NewExpenseProps> = ({ onNewExpense }) => {
     onNewExpense({
       id: nanoid(),
       title: currentTitleValue,
-      date: currentDateValue,
+      date: currentDateValue.replaceAll("-", "."),
       amount: Number(currentAmountValue),
     });
+
+    expenseTitleRef.current!.value = "";
+    expenseDateRef.current!.value = "";
+    expenseAmountRef.current!.value = "";
   };
 
   return (

@@ -1,31 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
+import { ExpenseProps } from "./Expense";
 import Expenses from "./Expenses";
 
-const MOCK_DATA = [
-  {
-    id: "a1",
-    title: "와인",
-    amount: 25000,
-    date: "2022.02.12",
-  },
-  {
-    id: "a2",
-    title: "커피",
-    amount: 5000,
-    date: "2022.02.15",
-  },
-  {
-    id: "a3",
-    title: "의자",
-    amount: 70000,
-    date: "2022.01.09",
-  },
-];
+export interface ExpenseListProps {
+  expenses: ExpenseProps[];
+}
 
-const ExpenseList = () => {
+const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
   return (
     <div>
-      <Expenses expenses={MOCK_DATA} />
+      <Expenses expenses={expenses} />
     </div>
   );
 };
