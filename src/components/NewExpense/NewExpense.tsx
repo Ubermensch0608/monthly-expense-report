@@ -22,10 +22,17 @@ const NewExpense: FC<NewExpenseProps> = ({ onNewExpense }) => {
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-
     const currentTitleValue = expenseTitleRef.current!.value;
     const currentDateValue = expenseDateRef.current!.value;
     const currentAmountValue = expenseAmountRef.current!.value;
+
+    if (
+      currentTitleValue.length === 0 ||
+      currentDateValue.length === 0 ||
+      currentAmountValue.length === 0
+    ) {
+      return;
+    }
 
     onNewExpense({
       id: nanoid(),
