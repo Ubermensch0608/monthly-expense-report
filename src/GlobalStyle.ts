@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         font-family: 'Noto Sans KR', sans-serif;
+
+        background: #2C3333;
     };
     button{
         display: flex;

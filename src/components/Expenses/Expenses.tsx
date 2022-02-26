@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import Card from "src/layout/Card";
+import styled from "styled-components";
 import Expense, { ExpenseProps } from "./Expense";
 
 const Expenses: FC<{ expenses: ExpenseProps[] }> = ({ expenses }) => {
@@ -7,8 +9,8 @@ const Expenses: FC<{ expenses: ExpenseProps[] }> = ({ expenses }) => {
   }
 
   return (
-    <div>
-      <ul>
+    <Card>
+      <ExpensesUl>
         {expenses.map((expense) => (
           <Expense
             key={expense.id}
@@ -17,9 +19,13 @@ const Expenses: FC<{ expenses: ExpenseProps[] }> = ({ expenses }) => {
             title={expense.title}
           />
         ))}
-      </ul>
-    </div>
+      </ExpensesUl>
+    </Card>
   );
 };
+
+const ExpensesUl = styled.ul`
+  width: 90%;
+`;
 
 export default Expenses;

@@ -1,11 +1,14 @@
 import { nanoid } from "nanoid";
 import React, { FC, useRef } from "react";
+import Button from "src/layout/Button";
+import Card from "src/layout/Card";
+import styled from "styled-components";
 
 export interface ExpenseDataProps {
   id: string;
   title: string;
   date: string;
-  amount: number;
+  amount: string;
 }
 
 export interface NewExpenseProps {
@@ -28,7 +31,7 @@ const NewExpense: FC<NewExpenseProps> = ({ onNewExpense }) => {
       id: nanoid(),
       title: currentTitleValue,
       date: currentDateValue.replaceAll("-", "."),
-      amount: Number(currentAmountValue),
+      amount: Number(currentAmountValue).toLocaleString(),
     });
 
     expenseTitleRef.current!.value = "";
@@ -37,29 +40,60 @@ const NewExpense: FC<NewExpenseProps> = ({ onNewExpense }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label>지출 내용</label>
-          <input type="text" ref={expenseTitleRef} />
-        </div>
+    <Card>
+      <NewExpenseFormWrapper>
+        <NewExpenseFormTitle>
+          <div>새로운 지출 등록</div>
+        </NewExpenseFormTitle>
+        <FormCard>
+          <NewExpenseForm onSubmit={submitHandler}>
+            <div>
+              <label>지출 내용</label>
+              <input type="text" ref={expenseTitleRef} />
+            </div>
 
-        <div>
-          <label>지출일</label>
-          <input type="date" ref={expenseDateRef} />
-        </div>
+            <div>
+              <label>지출일</label>
+              <input type="date" ref={expenseDateRef} />
+            </div>
 
-        <div>
-          <label>지출액</label>
-          <input type="text" ref={expenseAmountRef} />
-        </div>
+            <div>
+              <label>지출액</label>
+              <input type="text" ref={expenseAmountRef} />
+            </div>
 
-        <div>
-          <button type="submit">입력하기</button>
-        </div>
-      </form>
-    </div>
+            <div>
+              <Button type="submit">입력하기</Button>
+            </div>
+          </NewExpenseForm>
+        </FormCard>
+      </NewExpenseFormWrapper>
+    </Card>
   );
 };
 
+export const NewExpenseFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+export const NewExpenseFormTitle = styled.div`
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  margin: 20px 0 20px 60px;
+
+  font-weight: 700;
+  font-size: 18px;
+`;
+
+export const NewExpenseForm = styled.form`
+  width: 90%;
+`;
+
+export const FormCard = styled(Card)`
+  background: #fff;
+`;
 export default NewExpense;
