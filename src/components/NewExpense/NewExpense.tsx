@@ -27,9 +27,9 @@ const NewExpense: FC<NewExpenseProps> = ({ onNewExpense }) => {
     const currentAmountValue = expenseAmountRef.current!.value;
 
     if (
-      currentTitleValue.length === 0 ||
-      currentDateValue.length === 0 ||
-      currentAmountValue.length === 0
+      currentTitleValue.trim().length === 0 ||
+      currentDateValue.trim().length === 0 ||
+      currentAmountValue.trim().length === 0
     ) {
       return;
     }

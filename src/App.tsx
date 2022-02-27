@@ -5,36 +5,24 @@ import { Fragment, useState } from "react";
 import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
-
-const MOCK_DATA = [
-  {
-    id: "a1",
-    title: "와인",
-    amount: "25,000",
-    date: "2022.02.12",
-  },
-  {
-    id: "a2",
-    title: "커피",
-    amount: "5,000",
-    date: "2022.02.15",
-  },
-  {
-    id: "a3",
-    title: "의자",
-    amount: "70,000",
-    date: "2022.01.09",
-  },
-];
+import { MOCK_DATA } from "./utils/expense-list";
 
 const App = () => {
   const [expenseList, setExpenseList] = useState<ExpenseDataProps[]>(MOCK_DATA);
+  const [filteredList, setFilteredList] =
+    useState<ExpenseDataProps[]>(expenseList);
 
   const saveExpenseHandler = (newExpenses: ExpenseDataProps) => {
     setExpenseList((expenseList) => [newExpenses, ...expenseList]);
   };
 
-  const filterExpenseHandler = () => {};
+  const filterExpenseHandler = (clickedYear: string) => {
+    const filteredExpenses = expenseList.filter(
+      (prevExpenses) => prevExpenses.date.split(".")[0] === clickedYear
+    );
+
+    setFilteredList(filteredExpenses);
+  };
 
   return (
     <Fragment>
@@ -42,7 +30,7 @@ const App = () => {
       <Wrapper>
         <NewExpense onNewExpense={saveExpenseHandler} />
         <Expenses
-          expenses={expenseList}
+          expenses={filteredList}
           onSelectedYear={filterExpenseHandler}
         />
       </Wrapper>

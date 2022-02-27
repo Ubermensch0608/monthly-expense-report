@@ -26,7 +26,8 @@ const Expense: FC<ExpenseProps> = ({ id, date, title, amount }) => {
 const ExpenseLi = styled.li`
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 0 30px;
 `;
 
 export default Expense;

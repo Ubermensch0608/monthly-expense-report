@@ -1,26 +1,8 @@
 import React, { FC } from "react";
 import Card from "src/layout/Card";
+import { MOCK_YEAR } from "src/utils/dropdown-year";
 import styled from "styled-components";
 import Expense, { ExpenseProps } from "./Expense";
-
-const MOCK_YEAR = [
-  {
-    id: "y1",
-    value: "2019",
-  },
-  {
-    id: "y2",
-    value: "2020",
-  },
-  {
-    id: "y3",
-    value: "2021",
-  },
-  {
-    id: "y4",
-    value: "2022",
-  },
-];
 
 export interface ExpensesProps {
   expenses: ExpenseProps[];
@@ -36,13 +18,20 @@ const Expenses: FC<ExpensesProps> = ({ expenses, onSelectedYear }) => {
 
   return (
     <Card>
-      <div>
+      <ExpensesWrapper>
         <Card>
-          <select onChange={selectYearHandler}>
-            {MOCK_YEAR.map((year) => (
-              <DropDownOption key={year.id}>{year.value}</DropDownOption>
-            ))}
-          </select>
+          <DropDownHolder>
+            <span>지출일</span>
+            <span>지출 내용</span>
+            <span>지출액</span>
+
+            <div>지출 연도 선택</div>
+            <select onChange={selectYearHandler}>
+              {MOCK_YEAR.map((year) => (
+                <DropDownOption key={year.id}>{year.value}</DropDownOption>
+              ))}
+            </select>
+          </DropDownHolder>
         </Card>
         <ExpensesUl>
           {expenses.map((expense) => (
@@ -54,13 +43,29 @@ const Expenses: FC<ExpensesProps> = ({ expenses, onSelectedYear }) => {
             />
           ))}
         </ExpensesUl>
-      </div>
+      </ExpensesWrapper>
     </Card>
   );
 };
 
+const ExpensesWrapper = styled.div`
+  width: 100%;
+`;
+
 const ExpensesUl = styled.ul`
-  width: 90%;
+  width: 100%;
+  margin: 0 auto;
+`;
+
+const DropDownHolder = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 30px;
+
+  > span {
+    margin: 0 20px;
+  }
 `;
 
 const DropDownOption = styled.option`
