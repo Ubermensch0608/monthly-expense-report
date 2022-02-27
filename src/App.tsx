@@ -28,18 +28,23 @@ const MOCK_DATA = [
 ];
 
 const App = () => {
-  const [expenseList, setExpenseList] = useState(MOCK_DATA);
+  const [expenseList, setExpenseList] = useState<ExpenseDataProps[]>(MOCK_DATA);
 
   const saveExpenseHandler = (newExpenses: ExpenseDataProps) => {
     setExpenseList((expenseList) => [newExpenses, ...expenseList]);
   };
+
+  const filterExpenseHandler = () => {};
 
   return (
     <Fragment>
       <GlobalStyle />
       <Wrapper>
         <NewExpense onNewExpense={saveExpenseHandler} />
-        <Expenses expenses={expenseList} />
+        <Expenses
+          expenses={expenseList}
+          onSelectedYear={filterExpenseHandler}
+        />
       </Wrapper>
     </Fragment>
   );
