@@ -6,11 +6,11 @@ import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";
 import { MOCK_DATA } from "./utils/expense-list";
+import Chart from "./components/ExpenseRateChart/Chart";
 
 const App = () => {
   const [expenseList, setExpenseList] = useState<ExpenseDataProps[]>(MOCK_DATA);
-  const [filteredList, setFilteredList] =
-    useState<ExpenseDataProps[]>(expenseList);
+  const [filteredList, setFilteredList] = useState<ExpenseDataProps[]>([]);
 
   const saveExpenseHandler = (newExpenses: ExpenseDataProps) => {
     setExpenseList((expenseList) => [newExpenses, ...expenseList]);
@@ -29,6 +29,7 @@ const App = () => {
       <GlobalStyle />
       <Wrapper>
         <NewExpense onNewExpense={saveExpenseHandler} />
+        <Chart filteredList={filteredList} />
         <Expenses
           expenses={filteredList}
           onSelectedYear={filterExpenseHandler}
