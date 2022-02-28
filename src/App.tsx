@@ -1,7 +1,7 @@
 import NewExpense, {
   ExpenseDataProps,
 } from "./components/NewExpense/NewExpense";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Expenses from "./components/Expenses/ExpenseList";
 import GlobalStyle from "./GlobalStyle";
 import styled from "styled-components";

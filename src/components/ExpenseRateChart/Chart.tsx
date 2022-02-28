@@ -110,6 +110,7 @@ const ChartWrapper = styled.div`
 `;
 const ChartBars = styled.div`
   display: flex;
+  height: 100%;
   justify-content: space-evenly;
   align-items: flex-end;
 `;

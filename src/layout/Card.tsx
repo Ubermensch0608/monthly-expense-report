@@ -1,11 +1,6 @@
-import { FC } from "react";
 import styled from "styled-components";
 
-const Card: FC = ({ children }) => {
-  return <StyledCard>{children}</StyledCard>;
-};
-
-const StyledCard = styled.div`
+const Card = styled.div`
   display: flex;
   justify-content: center;
 
