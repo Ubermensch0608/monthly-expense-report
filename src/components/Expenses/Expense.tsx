@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import Button from "src/layout/Button";
-import Card from "src/layout/Card";
+import { Card, Button } from "src/layout";
 import styled from "styled-components";
 
 export interface ExpenseProps {

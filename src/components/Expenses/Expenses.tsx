@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Card from "src/layout/Card";
+import { Card } from "src/layout";
 import { MOCK_YEAR } from "src/utils/dropdown-year";
 import styled from "styled-components";
 import Expense, { ExpenseProps } from "./Expense";

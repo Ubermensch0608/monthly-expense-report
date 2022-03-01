@@ -20,4 +20,4 @@ const Button = styled.button<{ secondary?: boolean }>`
         `}
 `;
 
-export default Button;
+export { Button };

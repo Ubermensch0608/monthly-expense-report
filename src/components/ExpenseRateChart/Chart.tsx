@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Card from "src/layout/Card";
+import { Card } from "src/layout";
 import styled from "styled-components";
 import { ExpenseDataProps } from "../NewExpense/NewExpense";
 

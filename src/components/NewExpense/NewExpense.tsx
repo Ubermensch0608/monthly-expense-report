@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
 import React, { FC, useRef } from "react";
-import Button from "src/layout/Button";
-import Card from "src/layout/Card";
+import { Card, Button } from "src/layout";
 import styled from "styled-components";
 
 export interface ExpenseDataProps {

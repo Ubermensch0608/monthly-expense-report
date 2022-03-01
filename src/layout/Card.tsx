@@ -11,4 +11,4 @@ const Card = styled.div`
   color: #fff;
 `;
 
-export default Card;
+export { Card };
