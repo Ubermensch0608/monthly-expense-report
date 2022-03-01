@@ -92,7 +92,7 @@ export const NewExpenseFormTitle = styled.div`
   margin: 20px 0 20px 60px;
 
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 export const NewExpenseForm = styled.form`
@@ -100,6 +100,6 @@ export const NewExpenseForm = styled.form`
 `;
 
 export const FormCard = styled(Card)`
-  background: #fff;
+  width: 50%;
 `;
 export default NewExpense;
