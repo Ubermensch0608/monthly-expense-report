@@ -17,7 +17,7 @@ const Expense: FC<ExpenseProps> = ({ id, date, title, amount }) => {
         <div>{date}</div>
         <h3>{title}</h3>
         <div>{amount}원</div>
-        <Button>X</Button>
+        <Button secondary>X</Button>
       </ExpenseLi>
     </Card>
   );

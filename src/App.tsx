@@ -1,39 +1,23 @@
-import NewExpense, {
-  ExpenseDataProps,
-} from "./components/NewExpense/NewExpense";
-import { Fragment, useEffect, useState } from "react";
-import Expenses from "./components/Expenses/ExpenseList";
-import GlobalStyle from "./GlobalStyle";
+import { Fragment } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+
 import styled from "styled-components";
-import { MOCK_DATA } from "./utils/expense-list";
-import Chart from "./components/ExpenseRateChart/Chart";
+import GlobalStyle from "./GlobalStyle";
 
 const App = () => {
-  const [expenseList, setExpenseList] = useState<ExpenseDataProps[]>(MOCK_DATA);
-  const [filteredList, setFilteredList] = useState<ExpenseDataProps[]>([]);
-
-  const saveExpenseHandler = (newExpenses: ExpenseDataProps) => {
-    setExpenseList((expenseList) => [newExpenses, ...expenseList]);
-  };
-
-  const filterExpenseHandler = (clickedYear: string) => {
-    const filteredExpenses = expenseList.filter(
-      (prevExpenses) => prevExpenses.date.split(".")[0] === clickedYear
-    );
-
-    setFilteredList(filteredExpenses);
-  };
-
   return (
     <Fragment>
       <GlobalStyle />
       <Wrapper>
-        <NewExpense onNewExpense={saveExpenseHandler} />
-        <Chart filteredList={filteredList} />
-        <Expenses
-          expenses={filteredList}
-          onSelectedYear={filterExpenseHandler}
-        />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
       </Wrapper>
     </Fragment>
   );

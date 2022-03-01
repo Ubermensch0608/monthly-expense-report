@@ -62,7 +62,6 @@ const Chart: FC<{ filteredList: ExpenseDataProps[] }> = ({ filteredList }) => {
     }
   }
 
-  console.log(count);
   return (
     <Card>
       <ChartWrapper>
